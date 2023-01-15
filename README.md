@@ -1,10 +1,8 @@
 # Solidity Reentrancy Attack Example
 
-Hardhat project of example reentrancy attack with tests
+Hardhat project with example reentrancy attack and tests.
 
-Example code of reentrancy attack with 2 possible solutions.
-
-Contracts
+**Contracts**
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
@@ -21,7 +19,7 @@ abstract contract ABank {
     function withdraw() external virtual;
 }
 
-// Vulnerable contract
+// Vulnerable contract - reentrancy attack is possible
 contract Bank1 is ABank {
     function withdraw() external override {
         uint256 balance = _balances[msg.sender];
@@ -33,7 +31,7 @@ contract Bank1 is ABank {
     }
 }
 
-// Reentrancy Guard
+// Contract using Reentrancy Guard
 contract Bank2 is ABank, ReentrancyGuard {
     function withdraw() external override nonReentrant {
         uint256 balance = _balances[msg.sender];
@@ -45,7 +43,9 @@ contract Bank2 is ABank, ReentrancyGuard {
     }
 }
 
-// CEI (Checks, Effects, Interactions) pattern - uses less gas
+// Contract using CEI (Checks, Effects, Interactions) pattern
+// Attacker's balance is updated before eth is sent
+// Uses less gas than Reentrancy Guard
 contract Bank3 is ABank, ReentrancyGuard {
     function withdraw() external override nonReentrant {
         uint256 balance = _balances[msg.sender];
@@ -76,7 +76,7 @@ contract Attack {
 }
 ```
 
-Contract Tests
+**Contract Tests**
 ```typescript
 import { expect } from "chai";
 import { ethers } from "hardhat";
