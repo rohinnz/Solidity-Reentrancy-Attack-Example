@@ -1,3 +1,5 @@
+// License-Identifier: MIT
+// Written by Rohin Knight
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Contract } from "ethers";

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Written by Rohin Knight
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -25,7 +26,7 @@ contract Bank1 is ABank {
     }
 }
 
-// Reentrancy Guard
+// Contract using Reentrancy Guard
 contract Bank2 is ABank, ReentrancyGuard {
     function withdraw() external override nonReentrant {
         uint256 balance = _balances[msg.sender];
@@ -37,7 +38,9 @@ contract Bank2 is ABank, ReentrancyGuard {
     }
 }
 
-// CEI (Checks, Effects, Interactions) pattern - uses less gas
+// Contract using CEI (Checks, Effects, Interactions) pattern
+// Attacker's balance is updated before eth is sent
+// Uses less gas than Reentrancy Guard
 contract Bank3 is ABank, ReentrancyGuard {
     function withdraw() external override nonReentrant {
         uint256 balance = _balances[msg.sender];
