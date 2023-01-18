@@ -1,6 +1,6 @@
 # Solidity Reentrancy Attack Example
 
-Hardhat project with example reentrancy attack and tests.
+Hardhat project with example reentrancy attacks and tests.
 
 **Contracts**
 ```solidity
