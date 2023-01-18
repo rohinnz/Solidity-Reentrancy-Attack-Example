@@ -5,7 +5,7 @@ Hardhat project with example reentrancy attack and tests.
 **Contracts**
 ```solidity
 // SPDX-License-Identifier: MIT
-// Written by Rohin Knight
+// Author: Rohin Knight
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
@@ -80,7 +80,7 @@ contract Attack {
 **Contract Tests**
 ```typescript
 // License-Identifier: MIT
-// Written by Rohin Knight
+// Author: Rohin Knight
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { Contract } from "ethers";
