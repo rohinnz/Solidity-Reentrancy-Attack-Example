@@ -5,7 +5,7 @@ Hardhat project with example reentrancy attacks and tests.
 **Contracts**
 ```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
